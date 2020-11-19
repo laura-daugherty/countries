@@ -1,24 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+import { Route } from "react-router-dom";
+import axios from "axios"
 import './App.css';
 
+import {CountriesList} from './components/countriesList'
+import Header from './components/header'
+
 function App() {
+  const [isDarkmode, setIsDarkmode] = useState(false)
+  const [countriesData, setCountriesData] = useState([])
+
+  useEffect(() => {
+    axios
+      .get ('https://restcountries.eu/rest/v2/all')
+      .then(
+        res => {
+          console.log(res.data)
+          setCountriesData(res.data)
+        }
+      )
+      .catch(err => console.log(err))
+  }, [])
+
+  console.log("countriesData", countriesData)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header isDarkmode={isDarkmode} setIsDarkmode={setIsDarkmode}/>
+      <Route exact path="/" render={(props) => <CountriesList {...props} countriesData={countriesData}/>} />
     </div>
   );
 }
