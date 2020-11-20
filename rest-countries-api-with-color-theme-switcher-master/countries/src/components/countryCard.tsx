@@ -8,7 +8,7 @@ type Props = {
 
 const CountryCard = (props:Props) => {
   return (
-    <p>{props.country.name} is the name of this country</p>
+    <p>{props.country.name}</p>
   )
 };
 export default CountryCard;

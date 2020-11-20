@@ -24,6 +24,6 @@ export const CountriesList = (props:Props) => {
   console.log("props.countriesData", props.countriesData)
 
   return (
-    <div>I'm a div{displayCountries(props.countriesData)}</div>
+    <div>{displayCountries(props.countriesData)}</div>
   )
 };
