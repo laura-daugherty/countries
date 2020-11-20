@@ -34,38 +34,26 @@ const Searchbar = (props:Props) => {
       ...search,
       [event.target.name]: event.target.value
     });
-    console.log("search value", search);
-  };
-
-  const handleSubmit = (event: any) => {
     const filterCountries: Country[] = []
     props.countriesData.map(country => {
-      console.log("country name", country.name)
-      console.log("search country", search.country)
       if (country.name.toLowerCase().includes(search.country.toLowerCase())) {
         filterCountries.push(country)
+        setCountriesData(filterCountries)
       } else {
         console.log("not a match", country)
       }
     })
-    setCountriesData(filterCountries)
-    console.log(props.countriesData)
-    console.log("filterCountries", filterCountries)
-    // setCountriesData(filterCountries)
-    }
+  };
 
   return (
     <div>
-      <button onClick={(e) => handleSubmit(e)}>Search</button>
-      {/* <form onSubmit={handleSubmit}> */}
-      <label> Country Search </label>
-        <input 
-          className=""
-          type="text"
-          name="country"
-          onChange={changeHandler}>
-        </input>
-      {/* </form> */}
+      <input 
+        placeholder="Search for a country..."
+        className=""
+        type="text"
+        name="country"
+        onChange={changeHandler}>
+      </input>
     </div>
 
   )
