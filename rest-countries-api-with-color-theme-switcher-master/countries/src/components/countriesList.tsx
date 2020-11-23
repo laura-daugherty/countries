@@ -2,7 +2,8 @@ import React from 'react'
 import CountryCard from './countryCard'
 
 export type Country = {
-  name: string
+  name: string,
+  region: string
 }
 
 type Props = {
