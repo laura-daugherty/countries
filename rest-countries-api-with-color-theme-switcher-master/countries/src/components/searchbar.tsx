@@ -11,10 +11,13 @@ type Props = {
 const Searchbar = (props:Props) => {
 
   const [search, setSearch] = useState({
-    country: ""
+    country: "",
+    region: ""
   })
+  const [allCountries, setAllCountries] = useState([] as any)
 
   const setCountriesData = props.setCountriesData
+  const countriesData = props.countriesData
 
   useEffect(() => {
     axios
@@ -23,11 +26,11 @@ const Searchbar = (props:Props) => {
         res => {
           console.log(res.data)
           setCountriesData(res.data)
+          setAllCountries(res.data)
         }
       )
       .catch(err => console.log(err))
   }, [])
-
 
   const changeHandler = (event:React.ChangeEvent<HTMLInputElement>) => {
     setSearch({
@@ -35,7 +38,7 @@ const Searchbar = (props:Props) => {
       [event.target.name]: event.target.value
     });
     const filterCountries: Country[] = []
-    props.countriesData.map(country => {
+    allCountries.map((country:Country) => {
       if (country.name.toLowerCase().includes(search.country.toLowerCase())) {
         filterCountries.push(country)
         setCountriesData(filterCountries)
@@ -44,6 +47,23 @@ const Searchbar = (props:Props) => {
       }
     })
   };
+
+  const regionHandler = (event:React.ChangeEvent<HTMLSelectElement>) => {
+    setSearch({
+      ...search,
+      [event.target.name]: event.target.value
+    });
+    const filterCountries: Country[] = []
+    setCountriesData(allCountries)
+    allCountries.map((country:Country) => {
+      if (country.region.includes(search.region)) {
+        filterCountries.push(country)
+        setCountriesData(filterCountries)
+      } else {
+        console.log("")
+      }
+    })
+  }
 
   return (
     <div>
@@ -54,6 +74,14 @@ const Searchbar = (props:Props) => {
         name="country"
         onChange={changeHandler}>
       </input>
+      <select name="region" id="region" onChange={regionHandler}>
+        <option value="Filter by Region">Filter by Region</option>
+        <option value="Africa">Africa</option>
+        <option value="America">America</option>
+        <option value="Asia">Asia</option>
+        <option value="Europe">Europe</option>
+        <option value="Oceania">Oceania</option>
+      </select>
     </div>
 
   )
