@@ -1,23 +1,23 @@
 import React, { useState, Dispatch, SetStateAction, FormEvent, useEffect } from 'react'
 import { Country } from './countriesList';
 import axios from 'axios'
+import CountryCard from './countryCard';
 
 
 type Props = {
-  countriesData: Array<Country>
-  setCountriesData: Dispatch<any>
+  filteredCountries: Array<Country>
+  setFilteredCountries: Dispatch<any>
 }
 
 const Searchbar = (props:Props) => {
 
   const [search, setSearch] = useState({
     country: "",
-    region: ""
+    region: "Filter by Region"
   })
   const [allCountries, setAllCountries] = useState([] as any)
 
-  const setCountriesData = props.setCountriesData
-  const countriesData = props.countriesData
+  const {filteredCountries, setFilteredCountries} = props
 
   useEffect(() => {
     axios
@@ -25,44 +25,44 @@ const Searchbar = (props:Props) => {
       .then(
         res => {
           console.log(res.data)
-          setCountriesData(res.data)
+          setFilteredCountries(res.data)
           setAllCountries(res.data)
         }
       )
       .catch(err => console.log(err))
   }, [])
 
+  useEffect(() => {
+    console.log("search 1", search)
+    setFilteredCountries(allCountries.filter((country: Country) => {
+      if (search.region !== "Filter by Region") {
+        if (!country.region.includes(search.region)) {
+          return false
+        }
+      } 
+
+      if (search.country !== "") {
+        if (!country.name.includes(search.country)) {
+          return false
+        }
+      }
+
+      return true
+    }))
+  }, [search])
+
   const changeHandler = (event:React.ChangeEvent<HTMLInputElement>) => {
     setSearch({
       ...search,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
-    const filterCountries: Country[] = []
-    allCountries.map((country:Country) => {
-      if (country.name.toLowerCase().includes(search.country.toLowerCase())) {
-        filterCountries.push(country)
-        setCountriesData(filterCountries)
-      } else {
-        console.log("not a match", country)
-      }
-    })
   };
 
   const regionHandler = (event:React.ChangeEvent<HTMLSelectElement>) => {
-    setSearch({
+   setSearch({
       ...search,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
-    const filterCountries: Country[] = []
-    setCountriesData(allCountries)
-    allCountries.map((country:Country) => {
-      if (country.region.includes(search.region)) {
-        filterCountries.push(country)
-        setCountriesData(filterCountries)
-      } else {
-        console.log("")
-      }
-    })
   }
 
   return (

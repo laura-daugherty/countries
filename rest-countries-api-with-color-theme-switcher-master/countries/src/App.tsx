@@ -9,16 +9,16 @@ import SearchBar from './components/searchbar'
 
 function App() {
   const [isDarkmode, setIsDarkmode] = useState(false)
-  const [countriesData, setCountriesData] = useState([] as any)
+  const [filteredCountries, setFilteredCountries] = useState([] as any)
 
 
 
-  console.log("countriesData", countriesData)
+  console.log("countriesData", filteredCountries)
   return (
     <div className="App">
       <Header isDarkmode={isDarkmode} setIsDarkmode={setIsDarkmode}/>
-      <SearchBar setCountriesData={setCountriesData} countriesData={countriesData}/>
-      <Route exact path="/" render={(props) => <CountriesList {...props} countriesData={countriesData}/>} />
+      <SearchBar setFilteredCountries={setFilteredCountries} filteredCountries={filteredCountries}/>
+      <Route exact path="/" render={(props) => <CountriesList {...props} filteredCountries={filteredCountries}/>} />
     </div>
   );
 }

@@ -8,7 +8,14 @@ type Props = {
 
 const CountryCard = (props:Props) => {
   return (
-    <p>{props.country.name}</p>
+    <div>
+      <h2> {props.country.name}</h2>
+      <p>Population: {props.country.population}</p>
+      <p>Region: {props.country.region}</p>
+      <p>Capital: {props.country.capital}</p>
+    </div>
+
+
   )
 };
 export default CountryCard;
