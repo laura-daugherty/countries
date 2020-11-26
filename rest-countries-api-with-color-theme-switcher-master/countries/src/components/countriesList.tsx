@@ -3,11 +3,13 @@ import CountryCard from './countryCard'
 
 export type Country = {
   name: string,
-  region: string
+  region: string,
+  population: number,
+  capital: string
 }
 
 type Props = {
-  countriesData: Array<Country>
+  filteredCountries: Array<Country>
 }
 
 export const CountriesList = (props:Props) => {
@@ -22,9 +24,9 @@ export const CountriesList = (props:Props) => {
     }
   }
 
-  console.log("props.countriesData", props.countriesData)
+  console.log("props.countriesData", props.filteredCountries)
 
   return (
-    <div>{displayCountries(props.countriesData)}</div>
+    <div>{displayCountries(props.filteredCountries)}</div>
   )
 };
