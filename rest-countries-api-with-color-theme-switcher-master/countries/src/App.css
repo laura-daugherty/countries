@@ -40,9 +40,25 @@
 body {
   color: black;
   background-color: white;
+  padding: 0 50px
 }
 
 body.dark {
   color: white;
   background-color: black;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+h1 {
+  font-size: 1.2rem;
+}
+
+#theme-toggle {
+  border: none;
+  background: inherit;
 }

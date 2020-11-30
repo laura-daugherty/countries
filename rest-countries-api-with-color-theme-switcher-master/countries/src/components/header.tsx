@@ -5,6 +5,7 @@ type Props = {
   isDarkmode: boolean
   setIsDarkmode: Dispatch<SetStateAction<boolean>>
 }
+
 function toggleTheme() {
   const themeToggle = document.getElementById('theme-toggle');
 
@@ -14,7 +15,6 @@ function toggleTheme() {
   }
 }
 
-
 if (localStorage.getItem('theme') === 'dark') {
   document.body.classList.add('dark');
 }
@@ -23,7 +23,7 @@ const Header = (props:Props) => {
   return (
     <div className="header">
       <h1>Where in the world?</h1>
-      <button id="theme-toggle" onClick={() => {toggleTheme()}}>Switch to dark mode</button>
+      <button id="theme-toggle" onClick={() => {toggleTheme()}}>Dark Mode</button>
     </div>
   )
 };

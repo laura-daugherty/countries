@@ -1,11 +1,16 @@
 import React from 'react'
+import { Url } from 'url';
+import CountryPage from './countryPage';
 import CountryCard from './countryCard'
+import { Link } from "react-router-dom";
+
 
 export type Country = {
   name: string,
   region: string,
   population: number,
-  capital: string
+  capital: string,
+  flag: string
 }
 
 type Props = {
@@ -17,7 +22,11 @@ export const CountriesList = (props:Props) => {
   function displayCountries(countries: Array<Country>) {
     if (countries) {
       return countries.map(country => {
-        return <CountryCard key={country.name} country = {country}/>
+        return (
+          <Link to={`/countries/${country.name}`}>
+            <CountryCard key={country.name} country = {country}/>
+          </Link>
+        )
       })
     } else {
       console.log("no countries")
