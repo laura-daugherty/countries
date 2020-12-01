@@ -3,24 +3,19 @@ import { Route } from "react-router-dom";
 import axios from "axios"
 import './App.css';
 
-import {CountriesList} from './components/countriesList'
+import {CountriesList, Country} from './components/countriesList'
 import Header from './components/header'
-import SearchBar from './components/searchbar'
 import CountryPage from './components/countryPage';
 
 function App() {
   const [isDarkmode, setIsDarkmode] = useState(false)
-  const [filteredCountries, setFilteredCountries] = useState([] as any)
-
-
 
   return (
     <div className="App">
       <Header isDarkmode={isDarkmode} setIsDarkmode={setIsDarkmode}/>
-      <SearchBar setFilteredCountries={setFilteredCountries} filteredCountries={filteredCountries}/>
-      <Route exact path="/" render={(props) => <CountriesList {...props} filteredCountries={filteredCountries}/>} />
+      <Route exact path="/" render={() => <CountriesList/>}/>
       <Route
-          path="/countries/:name"
+          path="/countries/:alpha3Code"
           render={(props) => <CountryPage {...props}/>}
         />
     </div>
