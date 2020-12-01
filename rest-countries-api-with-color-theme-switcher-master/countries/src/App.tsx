@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Route } from "react-router-dom";
-import axios from "axios"
 import './App.css';
 
-import {CountriesList, Country} from './components/countriesList'
+import {CountriesList} from './components/countriesList'
 import Header from './components/header'
 import CountryPage from './components/countryPage';
 
