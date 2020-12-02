@@ -15,10 +15,6 @@ function toggleTheme() {
   }
 }
 
-if (localStorage.getItem('theme') === 'dark') {
-  document.body.classList.add('dark');
-}
-
 const Header = (props:Props) => {
   return (
     <div className="header">
