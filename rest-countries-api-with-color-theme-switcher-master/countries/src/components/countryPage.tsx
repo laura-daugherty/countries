@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom';
 
 type Props = {
   match: { params: { 
-    alpha3Code: any;
+    alpha3Code: any
   }; }
-  history: any
+  history: { goBack: () => void; }
 }
 
 const CountryPage = (props: Props) => {
@@ -31,11 +31,7 @@ const CountryPage = (props: Props) => {
         console.log(error)
       })
   }, [props.match.params.alpha3Code])
-
-//  function goBack(props: Props) {
-//   props.history.goBack()
-//  }
-
+ 
  function isCountry(country: Country | null) {
   if (country && country.flag && country.name && country.population && country.region && country.capital) {
     return (
@@ -66,21 +62,13 @@ const CountryPage = (props: Props) => {
         </div>
       </div>
     )
-  } else {
-    return (
-      <div>
-        there is no country!
-      </div>
-    )
   }
  }
-  
   return (
     <div>
       {isCountry(country)}
     </div>
   )
-
 };
 
 export default CountryPage;
