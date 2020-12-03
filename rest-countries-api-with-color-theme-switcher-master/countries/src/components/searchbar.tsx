@@ -1,7 +1,6 @@
 import React, { useState, Dispatch, SetStateAction, FormEvent, useEffect } from 'react'
 import { Country } from './countriesList';
 import axios from 'axios'
-import CountryCard from './countryCard';
 
 
 type Props = {

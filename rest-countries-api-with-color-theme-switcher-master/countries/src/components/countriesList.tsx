@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import CountryCard from './countryCard'
 import { Link } from "react-router-dom";
 import SearchBar from "./searchbar"
+import './countriesList.css'
 
 type Currency = {
   code: string,
@@ -36,7 +37,7 @@ export const CountriesList = () => {
     if (countries) {
       return countries.map(country => {
         return (
-          <Link to={`/countries/${country.alpha3Code}`}>
+          <Link className="linkToCountry"to={`/countries/${country.alpha3Code}`}>
             <CountryCard key={country.alpha3Code} country = {country}/>
           </Link>
         )
@@ -49,9 +50,9 @@ export const CountriesList = () => {
   console.log("props.countriesData", filteredCountries)
 
   return (
-    <div>
+    <div className="countriesList">
       <SearchBar setFilteredCountries={setFilteredCountries} filteredCountries={filteredCountries}/>
-      <div>{displayCountries(filteredCountries)}</div>
+      <div className="countriesList__div">{displayCountries(filteredCountries)}</div>
     </div>
 
   )
