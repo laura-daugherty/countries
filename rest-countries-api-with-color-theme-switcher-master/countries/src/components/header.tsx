@@ -10,6 +10,10 @@ function toggleTheme() {
   const themeToggle = document.getElementById('theme-toggle');
 
   if (themeToggle) {
+      let countryCards = document.getElementsByClassName("countryCard");
+      for (const card of Array.from(countryCards)) {
+        card.classList.toggle("dark")
+      }
       document.body.classList.toggle('dark');
       localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
   }
