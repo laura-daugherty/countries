@@ -1,0 +1,35 @@
+.countryCard {
+  width: fit-content;
+  background-color: white;
+  height: 400px;
+  margin: 20px
+}
+
+.countryCard.dark {
+  border:2px solid red;
+  background-color: black
+}
+
+.countryCard__div {
+  text-align: start;
+  padding: 10px
+}
+
+
+.countryCard__img {
+  width: 300px;
+  height: 200px
+}
+
+.countryCard__h2 {
+  font-size: 1rem;
+  font-weight: 700
+}
+
+.info {
+  display: flex;
+}
+
+.info__div {
+  font-weight: 500
+}
