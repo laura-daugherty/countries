@@ -1,0 +1,42 @@
+.countryCard {
+  width: fit-content;
+  background-color: white;
+  height: 400px;
+  margin: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}
+
+.countryCard.dark {
+  background-color: hsl(209, 23%, 22%);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.countryCard__div {
+  text-align: start;
+  padding: 10px
+}
+
+.countryCard__img {
+  width: 300px;
+  height: 200px
+}
+
+.countryCard__h2 {
+  font-size: 1rem;
+  font-weight: 800
+}
+
+.info {
+  display: flex;
+}
+
+.info__div {
+  font-size: .75rem;
+  font-weight: 600;
+  margin-right: 5px;
+  margin-bottom: 5px
+}
+
+.info__div--props {
+  font-size: .75rem;
+  font-weight: 300
+}
