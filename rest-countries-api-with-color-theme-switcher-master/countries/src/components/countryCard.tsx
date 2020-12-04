@@ -13,7 +13,7 @@ const CountryCard = (props:Props) => {
       <div className="countryCard__div">
         <h2 className="countryCard__h2"> {props.country.name}</h2>
         <div className="info">
-          <div className="info__div">Population:</div> <div className="info__div--props">{props.country.population}</div> 
+          <div className="info__div">Population:</div> <div className=" info__div info__div--props">{props.country.population}</div> 
         </div>
         <div className="info">
           <div className="info__div">Region:</div> <div className="info__div--props"> {props.country.region}</div>
