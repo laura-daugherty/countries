@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  font-family: 'Nunito Sans', sans-serif;
+
 }
 
 .App-logo {
@@ -40,7 +42,6 @@
 body {
   color:hsl(200, 15%, 8%);
   background-color: hsl(0, 0%, 98%);
-  padding: 0 50px
 }
 
 body.dark {
@@ -48,17 +49,4 @@ body.dark {
   background-color: hsl(207, 26%, 17%);
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  
-}
 
-h1 {
-  font-size: 1.2rem;
-}
-
-#theme-toggle {
-  border: none;
-  background: inherit;
-}
