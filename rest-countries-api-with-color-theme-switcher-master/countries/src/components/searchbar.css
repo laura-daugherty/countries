@@ -1,0 +1,50 @@
+.searchbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 50px;
+  max-width: 2000px;
+  margin-bottom: 50px;
+}
+.searchbar__input {
+  border: none;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 0px 10px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  padding: 20px 400px 20px 10px
+}
+.searchbar__input:focus, textarea {
+  outline: none !important;
+}
+
+#searchbar__input.dark {
+  background-color: hsl(209, 23%, 22%);
+  color: white
+}
+
+#searchbar__input.dark::placeholder{
+  color: white
+}
+
+.select {
+  position: relative;
+  width: 200px
+}
+
+
+
+.select__select {
+  border: none;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 0px 10px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  padding: 10px;
+  width: 200px;
+  height: 60px
+}
+
+#select__select.dark {
+  background-color: hsl(209, 23%, 22%);
+  color: white
+}
+
+.select__select:focus {
+  outline: none !important
+}

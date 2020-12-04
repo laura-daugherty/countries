@@ -1,7 +1,7 @@
 import React, { useState, Dispatch, SetStateAction, FormEvent, useEffect } from 'react'
 import { Country } from './countriesList';
 import axios from 'axios'
-
+import "./searchbar.css"
 
 type Props = {
   filteredCountries: Array<Country>
@@ -65,22 +65,25 @@ const Searchbar = (props:Props) => {
   }
 
   return (
-    <div>
+    <div className="searchbar">
       <input 
         placeholder="Search for a country..."
-        className=""
+        className="searchbar__input"
+        id="searchbar__input"
         type="text"
         name="country"
         onChange={changeHandler}>
       </input>
-      <select name="region" id="region" onChange={regionHandler}>
-        <option value="Filter by Region">Filter by Region</option>
-        <option value="Africa">Africa</option>
-        <option value="America">America</option>
-        <option value="Asia">Asia</option>
-        <option value="Europe">Europe</option>
-        <option value="Oceania">Oceania</option>
-      </select>
+      <div className="select">
+        <select className="select__select" id= "select__select" name="region" onChange={regionHandler}>
+          <option value="Filter by Region">Filter by Region</option>
+          <option value="Africa">Africa</option>
+          <option value="America">America</option>
+          <option value="Asia">Asia</option>
+          <option value="Europe">Europe</option>
+          <option value="Oceania">Oceania</option>
+        </select>
+      </div>
     </div>
 
   )
