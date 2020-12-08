@@ -15,16 +15,16 @@
   outline: none !important;
 }
 
-#searchbar__input.dark {
+.searchbar__input.dark {
   background-color: hsl(209, 23%, 22%);
   color: white
 }
 
-#searchbar__input.dark::placeholder{
+.searchbar__input.dark::placeholder{
   color: white;
 }
 
-#searchbar__input::placeholder {
+.searchbar__input::placeholder {
   font-family: 'Nunito Sans', sans-serif;
 }
 
@@ -47,7 +47,7 @@
 
 }
 
-#select__select.dark {
+.select__select.dark {
   background-color: hsl(209, 23%, 22%);
   color: white
 }

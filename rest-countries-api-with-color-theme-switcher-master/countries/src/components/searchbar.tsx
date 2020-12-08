@@ -24,7 +24,6 @@ const Searchbar = (props:Props) => {
       .get ('https://restcountries.eu/rest/v2/all')
       .then(
         res => {
-          console.log(res.data)
           setFilteredCountries(res.data)
           setAllCountries(res.data)
         }
@@ -33,7 +32,6 @@ const Searchbar = (props:Props) => {
   }, [])
 
   useEffect(() => {
-    console.log("search 1", search)
     setFilteredCountries(allCountries.filter((country: Country) => {
       if (search.region !== "Filter by Region") {
         if (!country.region.includes(search.region)) {
@@ -65,30 +63,20 @@ const Searchbar = (props:Props) => {
     });
   }
 
-  const darkmode = () => {
-    if (props.isDarkmode) {
-      document.getElementById("searchbar__input")?.classList.add("dark")
-      document.getElementById("select__select")?.classList.add("dark")
-    } else {
-      document.getElementById("searchbar__input")?.classList.remove("dark")
-      document.getElementById("select__select")?.classList.remove("dark")
-    }
-  }
+
 
   return (
     <div>
-      {darkmode()}
       <div className="searchbar">
         <input 
           placeholder="Search for a country..."
-          className="searchbar__input"
-          id="searchbar__input"
+          className={props.isDarkmode ? "searchbar__input dark" : "searchbar__input"}
           type="text"
           name="country"
           onChange={changeHandler}>
         </input>
         <div className="select">
-          <select className="select__select" id= "select__select" name="region" onChange={regionHandler}>
+          <select className={props.isDarkmode ? "select__select dark" : "select__select"}  name="region" onChange={regionHandler}>
             <option value="Filter by Region">Filter by Region</option>
             <option value="Africa">Africa</option>
             <option value="America">America</option>
