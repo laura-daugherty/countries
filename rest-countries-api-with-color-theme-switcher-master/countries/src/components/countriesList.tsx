@@ -37,21 +37,6 @@ export type Country = {
 export const CountriesList = (props: Props) => {
   const [filteredCountries, setFilteredCountries] = useState([] as any)
 
-  // function countryCardDark() {
-  //   if (props.isDarkmode) {
-  //     var countryCardsArray = Array.prototype.slice.call(document.querySelectorAll(".countryCard"))
-  //     countryCardsArray.forEach((countryCard) => {
-  //       countryCard.classList.add("dark")
-  //     })
-  //   } else {
-  //     console.log("lightmode card")
-  //     var countryCardsArray = Array.prototype.slice.call(document.querySelectorAll(".countryCard"))
-  //     countryCardsArray.forEach((countryCard) => {
-  //       countryCard.classList.remove("dark")
-  //     })      
-  //   }
-  // }
-
   function displayCountries(countries: Array<Country>) {
     if (countries) {
       return countries.map(country => {
@@ -66,11 +51,9 @@ export const CountriesList = (props: Props) => {
     }
   }
 
-  console.log("props.countriesData", filteredCountries)
 
   return (
     <div className="countriesList">
-      {/* {countryCardDark()} */}
       <SearchBar isDarkmode={props.isDarkmode} setFilteredCountries={setFilteredCountries} filteredCountries={filteredCountries}/>
       <div className="countriesList__div">{displayCountries(filteredCountries)}</div>
     </div>

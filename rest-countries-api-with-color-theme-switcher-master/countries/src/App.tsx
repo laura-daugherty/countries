@@ -9,17 +9,8 @@ import CountryPage from './components/countryPage';
 function App() {
   const [isDarkmode, setIsDarkmode] = useState(false)
 
-  const darkmode = () => {
-    if (isDarkmode) {
-      document.body.classList.add("dark")
-    } else {
-      document.body.classList.remove("dark")
-    }
-  }
-
   return (
-    <div className="App">
-      {darkmode()}
+    <div className={isDarkmode ? "App dark" : "App"}>
       <Header isDarkmode={isDarkmode} setIsDarkmode={setIsDarkmode}/>
       <Route exact path="/" render={(props) => <CountriesList {...props} isDarkmode={isDarkmode}/>}/>
       <Route
