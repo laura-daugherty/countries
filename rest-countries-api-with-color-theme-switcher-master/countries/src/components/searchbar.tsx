@@ -4,6 +4,7 @@ import axios from 'axios'
 import "./searchbar.css"
 
 type Props = {
+  isDarkmode: boolean,
   filteredCountries: Array<Country>
   setFilteredCountries: Dispatch<any>
 }
@@ -64,28 +65,40 @@ const Searchbar = (props:Props) => {
     });
   }
 
+  const darkmode = () => {
+    if (props.isDarkmode) {
+      document.getElementById("searchbar__input")?.classList.add("dark")
+      document.getElementById("select__select")?.classList.add("dark")
+    } else {
+      document.getElementById("searchbar__input")?.classList.remove("dark")
+      document.getElementById("select__select")?.classList.remove("dark")
+    }
+  }
+
   return (
-    <div className="searchbar">
-      <input 
-        placeholder="Search for a country..."
-        className="searchbar__input"
-        id="searchbar__input"
-        type="text"
-        name="country"
-        onChange={changeHandler}>
-      </input>
-      <div className="select">
-        <select className="select__select" id= "select__select" name="region" onChange={regionHandler}>
-          <option value="Filter by Region">Filter by Region</option>
-          <option value="Africa">Africa</option>
-          <option value="America">America</option>
-          <option value="Asia">Asia</option>
-          <option value="Europe">Europe</option>
-          <option value="Oceania">Oceania</option>
-        </select>
+    <div>
+      {darkmode()}
+      <div className="searchbar">
+        <input 
+          placeholder="Search for a country..."
+          className="searchbar__input"
+          id="searchbar__input"
+          type="text"
+          name="country"
+          onChange={changeHandler}>
+        </input>
+        <div className="select">
+          <select className="select__select" id= "select__select" name="region" onChange={regionHandler}>
+            <option value="Filter by Region">Filter by Region</option>
+            <option value="Africa">Africa</option>
+            <option value="America">America</option>
+            <option value="Asia">Asia</option>
+            <option value="Europe">Europe</option>
+            <option value="Oceania">Oceania</option>
+          </select>
+        </div>
       </div>
     </div>
-
   )
 };
 export default Searchbar;

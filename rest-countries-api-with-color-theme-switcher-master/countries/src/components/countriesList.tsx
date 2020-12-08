@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import SearchBar from "./searchbar"
 import './countriesList.css'
 
+type Props = {
+  isDarkmode: boolean
+}
+
 type Currency = {
   code: string,
   name: string,
@@ -30,15 +34,30 @@ export type Country = {
 }
 
 
-export const CountriesList = () => {
+export const CountriesList = (props: Props) => {
   const [filteredCountries, setFilteredCountries] = useState([] as any)
+
+  // function countryCardDark() {
+  //   if (props.isDarkmode) {
+  //     var countryCardsArray = Array.prototype.slice.call(document.querySelectorAll(".countryCard"))
+  //     countryCardsArray.forEach((countryCard) => {
+  //       countryCard.classList.add("dark")
+  //     })
+  //   } else {
+  //     console.log("lightmode card")
+  //     var countryCardsArray = Array.prototype.slice.call(document.querySelectorAll(".countryCard"))
+  //     countryCardsArray.forEach((countryCard) => {
+  //       countryCard.classList.remove("dark")
+  //     })      
+  //   }
+  // }
 
   function displayCountries(countries: Array<Country>) {
     if (countries) {
       return countries.map(country => {
         return (
           <Link className="linkToCountry"to={`/countries/${country.alpha3Code}`}>
-            <CountryCard key={country.alpha3Code} country = {country}/>
+            <CountryCard key={country.alpha3Code} country = {country} isDarkmode = {props.isDarkmode}/>
           </Link>
         )
       })
@@ -51,7 +70,8 @@ export const CountriesList = () => {
 
   return (
     <div className="countriesList">
-      <SearchBar setFilteredCountries={setFilteredCountries} filteredCountries={filteredCountries}/>
+      {/* {countryCardDark()} */}
+      <SearchBar isDarkmode={props.isDarkmode} setFilteredCountries={setFilteredCountries} filteredCountries={filteredCountries}/>
       <div className="countriesList__div">{displayCountries(filteredCountries)}</div>
     </div>
 
