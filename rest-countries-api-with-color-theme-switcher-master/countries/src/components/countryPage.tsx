@@ -36,7 +36,10 @@ const CountryPage = (props: Props) => {
   if (country && country.flag && country.name && country.population && country.region && country.capital) {
     return (
       <div className="country_page">
-        <button className={props.isDarkmode ? "country_page__button dark":"country_page__button"}onClick={() => {props.history.goBack()}}>Back</button>
+        <button className={props.isDarkmode ? "country_page__button dark":"country_page__button"}onClick={() => {props.history.goBack()}}>
+          <i className="country_page__icon fas fa-arrow-left"></i> 
+          Back
+        </button>
         <div className="country_page__container">
           <img className="country_page__img"src={country.flag} alt={country.name}/>
           <div className="country_page__div">

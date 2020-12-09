@@ -7,6 +7,10 @@
   margin: 50px;
   justify-content: space-between;
 }
+
+.country_page__icon {
+  margin-right: 10px
+}
 .country_page__button {
   background-color:white;
   border: none;
