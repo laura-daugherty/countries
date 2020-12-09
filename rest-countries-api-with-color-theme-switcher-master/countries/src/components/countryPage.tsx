@@ -3,13 +3,13 @@ import {Country} from './countriesList'
 import React from 'react';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
-
-
+import "./countrypage.css"
 type Props = {
   match: { params: { 
     alpha3Code: any
   }; }
-  history: { goBack: () => void; }
+  history: { goBack: () => void; },
+  isDarkmode: boolean,
 }
 
 const CountryPage = (props: Props) => {
@@ -35,27 +35,33 @@ const CountryPage = (props: Props) => {
  function isCountry(country: Country | null) {
   if (country && country.flag && country.name && country.population && country.region && country.capital) {
     return (
-      <div>
-        <button onClick={() => {props.history.goBack()}}>Back</button>
-        <div className="">
-          <img src={country.flag}/>
-          <div className="">
-            <h2> {country.name}</h2>
-            <p>Native Name: {country.nativeName}</p>
-            <p>Population: {country.population}</p>
-            <p>Region: {country.region}</p>
-            <p>Sub Region: {country.subregion}</p>
-            <p>Capital: {country.capital}</p>
-            <p>Top Level Domain: {country.topLevelDomain}</p>
-            <p>Currencies: {country.currencies.map(currency => {
-              return (country.currencies.length > 1 ? <div>{currency.name}, </div> : <div> {currency.name}</div>)
-              })}</p>
-            <p>Languages: {country.languages.map(language => {
-              return (country.languages.length > 1 ? <div>{language.name},</div> : <div>{language.name}</div>)
-            })}</p>
-            <p>Border Countries: {country.borders.map(border => {
+      <div className="country_page">
+        <button className={props.isDarkmode ? "country_page__button dark":"country_page__button"}onClick={() => {props.history.goBack()}}>Back</button>
+        <div className="country_page__container">
+          <img className="country_page__img"src={country.flag} alt={country.name}/>
+          <div className="country_page__div">
+            <h2 className="country_page__h2"> {country.name}</h2>
+            <div className="country_info">
+              <div className="country_info__div1">
+                <p className="country_info__p"><b>Native Name:</b> {country.nativeName}</p>
+                <p className="country_info__p"><b>Population:</b> {country.population}</p>
+                <p className="country_info__p"> <b>Region:</b> {country.region}</p>
+                <p className="country_info__p"><b>Sub Region:</b> {country.subregion}</p>
+                <p className="country_info__p"><b>Capital:</b> {country.capital}</p>
+              </div>
+              <div className="country_info__div2">
+                <p className="country_info__p"><b>Top Level Domain:</b> {country.topLevelDomain}</p>
+                <p className="country_info__p"><b>Currencies:</b> {country.currencies.map(currency => {
+                  return (country.currencies.length > 1 ? <div>{currency.name}, </div> : <div> {currency.name}</div>)
+                  })}</p>
+                <p className="country_info__p"><b>Languages:</b> {country.languages.map(language => {
+                  return (country.languages.length > 1 ? <div>{language.name},</div> : <div>{language.name}</div>)
+                })}</p>
+              </div>
+            </div>
+            <p className="country_info__p country_info__border"><b>Border Countries:</b> {country.borders.map(border => {
               return (
-                <Link to={`/countries/${border}`}>{border}</Link>
+                <Link className={props.isDarkmode ? "country_info__Link dark" : "country_info__Link"} to={`/countries/${border}`}>{border}</Link>
               )
             })}</p>
           </div>    

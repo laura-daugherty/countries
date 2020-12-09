@@ -15,7 +15,7 @@ function App() {
       <Route exact path="/" render={(props) => <CountriesList {...props} isDarkmode={isDarkmode}/>}/>
       <Route
           path="/countries/:alpha3Code"
-          render={(props) => <CountryPage {...props}/>}
+          render={(props) => <CountryPage {...props} isDarkmode={isDarkmode}/>}
         />
     </div>
   );
