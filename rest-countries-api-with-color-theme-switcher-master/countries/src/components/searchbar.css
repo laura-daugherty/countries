@@ -2,9 +2,9 @@
   display: flex;
   justify-content: space-between;
   padding: 0px 50px;
-  max-width: 2000px;
   margin-bottom: 50px;
   /* width: fit-content */
+  /* width: webkit-fill-available */
 }
 .searchbar__input {
   border: none;
@@ -57,7 +57,17 @@
   outline: none !important
 }
 
-@media screen and (max-width: 375px) {
+
+@media screen and (max-width: 900px) {
+
+  .searchbar__input {
+    padding: 20px;
+    margin: 0px 0px 50px 0px;
+    width: 275px
+  }
+  }
+
+@media screen and (max-width: 683px) {
   .searchbar {
     padding: 0px 25px;
     display: flex;
