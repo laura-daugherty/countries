@@ -66,7 +66,6 @@ const Searchbar = (props:Props) => {
 
 
   return (
-    <div>
       <div className="searchbar">
         <input 
           placeholder="Search for a country..."
@@ -86,7 +85,6 @@ const Searchbar = (props:Props) => {
           </select>
         </div>
       </div>
-    </div>
   )
 };
 export default Searchbar;
