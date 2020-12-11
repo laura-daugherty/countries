@@ -3,8 +3,6 @@
   justify-content: space-between;
   padding: 0px 50px;
   margin-bottom: 50px;
-  /* width: fit-content */
-  /* width: webkit-fill-available */
 }
 .searchbar__input {
   border: none;
@@ -35,8 +33,6 @@
   
 }
 
-
-
 .select__select {
   border: none;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 0px 10px 0 rgba(0, 0, 0, 0.19);
@@ -45,7 +41,7 @@
   width: 200px;
   height: 60px;
   font-family: 'Nunito Sans', sans-serif;
-
+  cursor: pointer;
 }
 
 .select__select.dark {

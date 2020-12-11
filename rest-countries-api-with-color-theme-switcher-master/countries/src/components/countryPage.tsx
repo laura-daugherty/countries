@@ -23,9 +23,7 @@ const CountryPage = (props: Props) => {
     Axios
       .get(`https://restcountries.eu/rest/v2/alpha/${alpha3Code}`)
       .then(response => {
-        console.log("response", response)
         setCountry(response.data)
-        console.log("country", country)
       })
       .catch(error => {
         console.log(error)
@@ -62,14 +60,17 @@ const CountryPage = (props: Props) => {
                 })}</p>
               </div>
             </div>
-            <p className="country_info__p country_info__border"><b>Border Countries:</b> {country.borders.map(border => {
-              return (
-                <Link className={props.isDarkmode ? "country_info__Link dark" : "country_info__Link"} to={`/countries/${border}`}>{border}</Link>
-              )
-            })}</p>
+              <p className="country_info__p country_info__border"><b>Border Countries:</b></p> 
+              <div className="country_info__border_container">
+                {country.borders.map(border => {
+                  return (
+                    <Link className={props.isDarkmode ? "country_info__Link dark" : "country_info__Link"} to={`/countries/${border}`}>{border}</Link>
+                  )
+                })}
+              </div>
+            </div>
           </div>    
         </div>
-      </div>
     )
   }
  }
